@@ -26,7 +26,10 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+    .book {
+      width: 90%; /* Ajusta al 90% del ancho del contenedor */
+      aspect-ratio: 5/4; /* Relación de aspecto para mantener proporciones */
+    }
     .content {
       display: none; /* Todos los divs están ocultos por defecto */
       text-align: center;
@@ -246,7 +249,7 @@
       }
     }
  /* Responsivo para teléfonos y tablets */
- @media screen and (max-width: 768px) {
+ @media screen and (max-width: 1080px) {
     .book {
       margin-bottom: 50px;
       max-width: 90%;
@@ -336,6 +339,24 @@
       height: auto;
     }
   }
+  @media screen and (max-width: 480px) {
+  .page {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .rain {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page h1 {
+    font-size: 1.5em; /* Más pequeño para pantallas pequeñas */
+  }
+  .page img {
+    max-width: 80%; /* Ocupa el 80% del ancho disponible */
+  }
+}
   </style>
 </head>
 <body>
