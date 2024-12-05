@@ -19,37 +19,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-  /* TODO: Aquí comienza tu estilo original sin cambios */
+  /* Estilos generales para pantallas grandes */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.book {
-  width: 90%; /* Ajusta al 90% del ancho del contenedor */
-  aspect-ratio: 5/4; /* Relación de aspecto para mantener proporciones */
-}
-
-.content {
-  display: none; /* Todos los divs están ocultos por defecto */
-  text-align: center;
-  padding: 50px;
-  font-size: 24px;
-  color: #fff;
-}
-
-.show {
-  display: block; /* Mostrar div cuando tenga la clase show */
-}
-
-.first {
-  transition: opacity 1s;
-}
-
-.second {
-  transition: opacity 1s;
 }
 
 body {
@@ -118,41 +93,13 @@ body {
 
 .page p {
   font-family: 'Playfair Display', serif;
-  font-size: 1em;
+  font-size: 1.2em;
   color: #000000;
   text-align: center;
   margin: 12px 0;
   line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
-}
-
-.page i {
-  font-size: 0.5em;
-  color: #ffff;
-  margin-bottom: 1px;
-}
-
-.page:nth-child(1) {
-  background: linear-gradient(0deg, #3498db, #ffffff);
-  color: white;
-  transform: rotateY(0deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.page:nth-child(2) {
-  background: url('https://via.placeholder.com/800x500/3498db/ffffff?text=Egresados') no-repeat center center/cover;
-  transform: rotateY(-180deg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.page:nth-child(3) {
-  background: linear-gradient(120deg, #eaf2f8, #d5dbdb);
-  color: #34495e;
-  transform: rotateY(-360deg);
 }
 
 .cta-button {
@@ -175,158 +122,53 @@ body {
   transform: scale(1.1);
 }
 
-.rain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
+/* Estilos exclusivos para dispositivos móviles */
 
-.rain i {
-  position: absolute;
-  top: -50px;
-  font-size: 1.5em;
-  color: #000000;
-  opacity: 0.9;
-  animation: fall 3s linear infinite;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+    background: linear-gradient(135deg, #2c3e50, #2980b9);
   }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-  }
-}
 
-.title {
-  font-size: 5em;
-  color: #000000;
-  font-family: 'Sacramento', cursive;
-  text-align: center;
-  margin-top: -180px;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-}
-
-.title span {
-  display: block;
-  font-size: 1.5em;
-  margin-top: 20px;
-}
-
-.page-content {
-  overflow: hidden;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.video-container {
-  display: none; /* Oculta el iframe */
-}
-
-.page h1,
-.page p {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.pages {
-  transform: rotateY(0deg);
-}
-
-.page-1 {
-  animation: rotatePage 25s infinite;
-}
-
-@keyframes rotatePage {
-  0% {
-    transform: rotateY(0deg);
-  }
-  33% {
-    transform: rotateY(-180deg);
-  }
-  66% {
-    transform: rotateY(-360deg);
-  }
-  100% {
-    transform: rotateY(0deg);
-  }
-}
-
-/* Responsivo para teléfonos y tablets */
-@media screen and (max-width: 1080px) {
   .book {
-    margin-top: 200px;
-    max-width: 90%;
-    aspect-ratio: 3/4;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 3/4; /* Ajuste en el aspecto */
   }
-  .page-content {
-    overflow: hidden;
-    text-align: center;
-    padding: 0 20px;
-    margin-top: 10px;
-  }
+
   .page {
     width: 80%;
-    height: auto; /* Ajustar el alto automáticamente */
-    position: absolute;
-    background: #f9f9f9;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 10px solid #ffffff;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), inset 0 4px 10px rgba(255, 255, 255, 0.3);
-  }
-  .page img {
-    max-width: 100%;
     height: auto;
-    border-radius: 5px;
-    margin-top: 5px;
-    border: 5px solid #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    font-size: 0.9em;
   }
+
   .page h1 {
-    font-size: 1.5em;  /* Ajusta el tamaño del título */
-    margin-bottom: -90px;
+    font-size: 1.6em; /* Reducción del tamaño de la fuente */
+    margin-bottom: 10px;
   }
+
   .page p {
-    font-size: 0.9em; /* Ajusta el tamaño del texto */
-    margin-top: 0px;
+    font-size: 1em; /* Ajuste para el texto */
+    margin-top: 5px;
   }
+
   .cta-button {
     font-size: 1.1em;
     padding: 10px 20px;
+    margin-top: 15px;
   }
-  .title {
-    font-size: 3em;  /* Ajusta el tamaño del título */
+  
+  /* Ajuste en el logo y las imágenes */
+  .page img {
+    max-width: 90%;
+    height: auto;
+    margin-bottom: 15px;
   }
-  .rain i {
-    font-size: 1.0em;
-  }
-}
 
-@media screen and (max-width: 768px) {
-  .book {
-    max-width: 100%;
-    aspect-ratio: 2/3;
-  }
-  .page h1 {
-    font-size: 1.3em; /* Ajusta aún más el tamaño del título */
-  }
-  .page p {
-    font-size: 0.85em; /* Ajusta aún más el tamaño del texto */
-  }
-  .cta-button {
-    font-size: 1.0em;
-    padding: 8px 16px;
+  /* Reemplazo de la animación de lluvia */
+  .rain i {
+    font-size: 1.2em;
   }
 }
 
@@ -346,9 +188,9 @@ body {
         <!-- Primera página -->
         <div class="page " >
           <div class="page-content">
-            <h1>La Direccion de la U.E. Celso Rafaelli en coordinacion con las Maestras y padres de familia
+            <p>La Direccion de la U.E. Celso Rafaelli en coordinacion con las Maestras y padres de familia
               de la promito 2024 tiene el honor de invitar a usted a ser parte del acto de promocion
-            </h1>
+            </p>
             <img src="https://raw.githubusercontent.com/joseluis1997/invitacion/refs/heads/main/imagenes/uno.jpeg" alt="Imagen de Graduación">
             <p><i class="fas fa-calendar"></i> Fecha: 06 de diciembre</p>
             <p><i class="fas fa-map-marker-alt"></i> Lugar: En nuestro Establecimiento</p>
