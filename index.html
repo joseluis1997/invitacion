@@ -248,12 +248,42 @@
  /* Responsivo para teléfonos y tablets */
  @media screen and (max-width: 768px) {
     .book {
+      margin-bottom: 50px;
       max-width: 90%;
       aspect-ratio: 3/4;
     }
-
+    .page-content {
+      overflow: hidden;
+      text-align: center;
+      padding: 0 20px;
+      margin-bottom: 200px;
+    }
+    .page {
+      width: 80%;
+      height: 80%;
+      position: absolute;
+      background: #f9f9f9;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 10px solid #ffffff;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), inset 0 4px 10px rgba(255, 255, 255, 0.3);
+    }
+    .page img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.3);
+    }
     .page h1 {
       font-size: 2.2em;
+      margin-bottom: -80px;
     }
 
     .page p {
@@ -266,12 +296,12 @@
     }
 
     .title {
-      font-size: 3.5em;
-      margin-top: 10px;
+      font-size: 3.0em;
+      margin-bottom: -50px;
     }
 
     .rain i {
-      font-size: 1.2em;
+      font-size: 1.0em;
     }
   }
 
