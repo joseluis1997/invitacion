@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
   /* Estilos generales para pantallas grandes */
-
 * {
   margin: 0;
   padding: 0;
@@ -123,7 +122,6 @@ body {
 }
 
 /* Estilos exclusivos para dispositivos móviles */
-
 @media screen and (max-width: 768px) {
   body {
     padding: 10px;
@@ -132,43 +130,50 @@ body {
 
   .book-container {
     width: 100%;
-    max-width: 100%;
-    aspect-ratio: 3/4; /* Ajuste en el aspecto */
+    height: auto;
+    aspect-ratio: 3/4;
+  }
+
+  .pages-container {
+    width: 100%;
+    height: auto;
+    transform: rotateY(0deg); /* Sin animaciones complicadas */
   }
 
   .page-content {
-    width: 80%;
+    width: 90%;
     height: auto;
-    padding: 20px;
-    font-size: 0.9em;
+    padding: 15px;
+    font-size: 1em;
   }
 
   .page-content h1 {
-    font-size: 1.6em; /* Reducción del tamaño de la fuente */
+    font-size: 1.6em;
     margin-bottom: 10px;
   }
 
   .page-content p {
-    font-size: 1em; /* Ajuste para el texto */
+    font-size: 1em;
     margin-top: 5px;
+    padding: 0 10px;
   }
 
   .cta-button {
     font-size: 1.1em;
     padding: 10px 20px;
     margin-top: 15px;
+    width: 100%; /* Ajuste para que el botón no se desborde */
   }
 
-  /* Ajuste en el logo y las imágenes */
   .page-content img {
     max-width: 90%;
     height: auto;
     margin-bottom: 15px;
   }
 
-  /* Reemplazo de la animación de lluvia */
-  .rain-icon {
-    font-size: 1.2em;
+  .cta-button {
+    text-align: center;
+    padding: 15px;
   }
 }
 
