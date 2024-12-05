@@ -245,16 +245,16 @@
         transform: rotateY(0deg);
       }
     }
-
-    /* Responsividad */
-    @media screen and (max-width: 768px) {
+  /* Añadido: Ajustes de diseño responsivo */
+  @media screen and (max-width: 768px) {
       .book {
-        max-width: 95%;
+        max-width: 90%;
         height: auto;
+        margin: auto;
       }
 
       .page h1 {
-        font-size: 2em;
+        font-size: 1.8em;
       }
 
       .page p {
@@ -265,11 +265,30 @@
         font-size: 1em;
         padding: 10px 20px;
       }
+
+      .title {
+        font-size: 2.5em;
+        margin-top: 20px;
+      }
+
+      .rain i {
+        font-size: 1em;
+      }
+
+      .page img {
+        width: 90%;
+        height: auto;
+      }
     }
 
     @media screen and (max-width: 480px) {
+      .book {
+        max-width: 95%;
+      }
+
       .title {
-        font-size: 3em;
+        font-size: 2em;
+        margin-top: 10px;
       }
 
       .page h1 {
@@ -283,6 +302,15 @@
       .cta-button {
         font-size: 0.9em;
         padding: 8px 16px;
+      }
+
+      .page img {
+        width: 100%;
+        height: auto;
+      }
+
+      .rain i {
+        font-size: 0.8em;
       }
     }
   </style>
