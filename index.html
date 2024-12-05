@@ -18,254 +18,381 @@
   <title>Invitación de Graduación - Libro</title>
   <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-  /* Estilos generales */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <style>
+    /* TODO: Aquí comienza tu estilo original sin cambios */
 
-body {
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #2c3e50, #3498db);
-  overflow: hidden;
-  animation: backgroundAnimation 8s ease infinite;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .book {
+      width: 90%; /* Ajusta al 90% del ancho del contenedor */
+      aspect-ratio: 5/4; /* Relación de aspecto para mantener proporciones */
+    }
+    .content {
+      display: none; /* Todos los divs están ocultos por defecto */
+      text-align: center;
+      padding: 50px;
+      font-size: 24px;
+      color: #fff;
+    }
 
-@keyframes backgroundAnimation {
-  0% {
-    background: linear-gradient(135deg, #2c3e50, #3498db);
+    .show {
+      display: block; /* Mostrar div cuando tenga la clase show */
+    }
+
+    .first {
+      transition: opacity 1s;
+    }
+
+    .second {
+      transition: opacity 1s;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #2c3e50, #3498db, #34495e);
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .book {
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      aspect-ratio: 5/4;
+      position: relative;
+      perspective: 1500px;
+      margin: auto;
+    }
+
+    .pages {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      transition: transform 1.5s ease-in-out;
+    }
+
+    .page {
+      width: 90%;
+      height: 120%;
+      position: absolute;
+      background: #f9f9f9;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 10px solid #ffffff;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), inset 0 4px 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .page img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .page h1 {
+      font-family: 'Sacramento', cursive;
+      font-size: 3em;
+      color: #2c3e50;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0px;
+    }
+
+    .page p {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.6em;
+      color: #000000;
+      text-align: center;
+      margin: 12px 0;
+      line-height: 1.0;
+    }
+
+    .page i {
+      font-size: 0.5em;
+      color: #ffff;
+      margin-bottom: 1px;
+    }
+
+    .page:nth-child(1) {
+      background: linear-gradient(0deg, #3498db, #ffffff);
+      color: white;
+      transform: rotateY(0deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page:nth-child(2) {
+      background: url('https://via.placeholder.com/800x500/3498db/ffffff?text=Egresados') no-repeat center center/cover;
+      transform: rotateY(-180deg);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .page:nth-child(3) {
+      background: linear-gradient(120deg, #eaf2f8, #d5dbdb);
+      color: #34495e;
+      transform: rotateY(-360deg);
+    }
+
+    .cta-button {
+      background: #3498db;
+      padding: 12px 24px;
+      border: none;
+      color: white;
+      border-radius: 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+
+    .cta-button:hover {
+      background: #2980b9;
+      transform: scale(1.1);
+    }
+
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .rain i {
+      position: absolute;
+      top: -50px;
+      font-size: 1.5em;
+      color: #000000;
+      opacity: 0.9;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .title {
+      font-size: 5em;
+      color: #000000;
+      font-family: 'Sacramento', cursive;
+      text-align: center;
+      margin-top: -180px;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .title span {
+      display: block;
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+
+    .page-content {
+      overflow: hidden;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .video-container {
+            display: none; /* Oculta el iframe */
+        }
+    .page h1,
+    .page p {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    .pages {
+      transform: rotateY(0deg);
+    }
+
+    .page-1 {
+      animation: rotatePage 25s infinite;
+    }
+
+    @keyframes rotatePage {
+      0% {
+        transform: rotateY(0deg);
+      }
+      33% {
+        transform: rotateY(-180deg);
+      }
+      66% {
+        transform: rotateY(-360deg);
+      }
+      100% {
+        transform: rotateY(0deg);
+      }
+    }
+ /* Responsivo para teléfonos y tablets */
+@media screen and (max-width: 1080px) {
+  .book {
+    margin-top: 200px;
+    max-width: 90%;
+    aspect-ratio: 3/4;
   }
-  50% {
-    background: linear-gradient(135deg, #3498db, #2c3e50);
-  }
-  100% {
-    background: linear-gradient(135deg, #2c3e50, #3498db);
-  }
-}
-
-.book-container {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  margin: 0 10px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.pages-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.page-content {
-  width: 100%;
-  height: auto;
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  animation: slideUp 0.6s ease-in-out;
-}
-
-@keyframes slideUp {
-  0% {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.page-content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  animation: imageSlide 1s ease-in-out;
-}
-
-@keyframes imageSlide {
-  0% {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.page-content h1 {
-  font-family: 'Sacramento', cursive;
-  font-size: 2em;
-  color: #2c3e50;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
-  margin-bottom: 10px;
-  text-align: center;
-  animation: textAppear 1s ease-in-out;
-}
-
-@keyframes textAppear {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.page-content p {
-  font-family: 'Playfair Display', serif;
-  font-size: 1em;
-  color: #000000;
-  text-align: center;
-  margin: 10px 0;
-  animation: textFadeIn 1s ease-in-out;
-}
-
-@keyframes textFadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.cta-button {
-  background: #3498db;
-  padding: 12px 24px;
-  border: none;
-  color: white;
-  border-radius: 30px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 20px;
-  text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-  animation: buttonAppear 1s ease-in-out;
-}
-
-@keyframes buttonAppear {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.cta-button:hover {
-  background: #2980b9;
-  transform: scale(1.1);
-}
-
-/* Estilos para dispositivos móviles */
-@media screen and (max-width: 768px) {
-  body {
-    padding: 10px;
-    background: linear-gradient(135deg, #2c3e50, #2980b9);
-  }
-
-  .book-container {
-    width: 100%;
-    height: auto;
-    margin: 0;
-  }
-
   .page-content {
-    width: 100%;
-    padding: 15px;
+    overflow: hidden;
+    text-align: center;
+    padding: 0 20px;
+    margin-top: 10px;
   }
-
-  .page-content h1 {
-    font-size: 1.8em;
+  .page {
+    width: 80%;
+    height: auto; /* Ajustar el alto automáticamente */
+    position: absolute;
+    background: #f9f9f9;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid #ffffff;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), inset 0 4px 10px rgba(255, 255, 255, 0.3);
   }
-
-  .page-content p {
-    font-size: 1em;
-    padding: 0 10px;
+  .page img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.3);
   }
-
+  .page h1 {
+    font-size: 1.5em;
+    margin-bottom: -90px;
+  }
+  .page p {
+    font-size: 0.6em;
+    margin-top: 0px;
+  }
   .cta-button {
     font-size: 1.1em;
-    padding: 12px;
-    width: 100%;
+    padding: 10px 20px;
   }
-
-  .page-content img {
-    width: 100%;
-    height: auto;
+  .title {
+    font-size: 5.0em;
+  }
+  .rain i {
+    font-size: 1.0em;
   }
 }
 
-</style>
+@media screen and (max-width: 768px) {
+  .book {
+    max-width: 100%;
+    aspect-ratio: 3/4; /* Ajustar aspecto a pantallas pequeñas */
+  }
+  .page h1 {
+    font-size: 1.8em;
+  }
+  .page p {
+    font-size: 0.6em;
+  }
+  .cta-button {
+    font-size: 1em;
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .book {
+    max-width: 95%;
+  }
+  .title {
+    font-size: 2.5em;
+  }
+  .page h1 {
+    font-size: 1.5em; /* Más pequeño para pantallas pequeñas */
+  }
+  .page img {
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    height: auto;
+  }
+  .cta-button {
+    font-size: 1em;
+    padding: 8px 16px;
+  }
+  .rain i {
+    font-size: 1em;
+  }
+  .page {
+    padding: 10px; /* Ajustar el padding en pantallas pequeñas */
+  }
+  .rain {
+    display: none; /* Ocultar lluvia en pantallas pequeñas */
+  }
+}
+
+  </style>
 </head>
 <body>
   <audio id="backgroundAudio" preload="auto">
     <source src="https://raw.githubusercontent.com/joseluis1997/invitacion/refs/heads/main/musica/musica4.mp3" type="audio/mpeg">
     Tu navegador no soporta el audio.
-  </audio>
-
+</audio>
   <div class="rain"></div>
 
   <div class="book">
-    <div class="title">¡Estás invitado a mi graduación! <i class="fas fa-graduation-cap"></i> 2024</div>
 
-    <div class="pages content first show" id="firstDiv">
+    <div class="title">¡Estás invitado a mi graduación! <i class="fas fa-graduation-cap"></i>2024</div>
+      <div class="pages content first show" id="firstDiv">
+        <!-- Primera página -->
+        <div class="page " >
+          <div class="page-content">
+            <p>La Direccion de la U.E. Celso Rafaelli en coordinacion con las Maestras y padres de familia
+              de la promito 2024 tiene el honor de invitar a usted a ser parte del acto de promocion
+            </p>
+            <img src="https://raw.githubusercontent.com/joseluis1997/invitacion/refs/heads/main/imagenes/uno.jpeg" alt="Imagen de Graduación">
+            <p><i class="fas fa-calendar"></i> Fecha: 06 de diciembre</p>
+            <p><i class="fas fa-map-marker-alt"></i> Lugar: En nuestro Establecimiento</p>
+          </div>
+        </div>
+    </div>
+    <div class="pages page-1 content second" id="secondDiv">
       <!-- Primera página -->
       <div class="page">
         <div class="page-content">
-          <p>La Dirección de la U.E. Celso Rafaelli, en coordinación con las maestras y padres de familia de la promoción 2024, tiene el honor de invitarle a ser parte del acto de promoción.</p>
-          <img src="https://raw.githubusercontent.com/joseluis1997/invitacion/refs/heads/main/imagenes/uno.jpeg" alt="Imagen de Graduación">
-          <p><i class="fas fa-calendar"></i> Fecha: 06 de diciembre</p>
-          <p><i class="fas fa-map-marker-alt"></i> Lugar: En nuestro Establecimiento</p>
-        </div>
-      </div>
-    </div>
 
-    <div class="pages content second" id="secondDiv">
-      <!-- Segunda página -->
-      <div class="page">
-        <div class="page-content">
           <h1>Egresados 2024</h1>
           <img src="https://raw.githubusercontent.com/joseluis1997/invitacion/refs/heads/main/imagenes/10.jpeg" alt="Imagen de Graduación">
+
           <p>Recuerda este momento especial con todos nosotros.</p>
+
         </div>
       </div>
-
       <!-- Tercera página -->
-      <div class="page">
+      <div class="page" >
         <div class="page-content">
           <h1>Agradecimientos</h1>
           <img src="https://raw.githubusercontent.com/joseluis1997/invitacion/refs/heads/main/imagenes/tres.jpeg" alt="Imagen de Graduación">
+
           <p>Gracias por formar parte de este día inolvidable.</p>
           <p>Unidad Educativa Celso Raffaelli, Caraparí, Bolivia.</p>
           <button class="cta-button" onclick="confirmAttendance()">Confirmar Asistencia</button>
@@ -273,58 +400,69 @@ body {
       </div>
     </div>
   </div>
-
   <script>
     // Obtener el audio
     const audio = document.getElementById("backgroundAudio");
 
-    // Reproducir audio al hacer clic o toque
+    // Precarga el audio al cargar la página
+    window.addEventListener("load", () => {
+        audio.load(); // Asegura que el archivo de audio esté cargado
+    });
+
+    // Función para reproducir audio
     function playAudio() {
-      audio.play()
-        .then(() => console.log("Audio reproduciéndose"))
-        .catch(err => console.error("Error al reproducir audio:", err));
+        audio.play()
+            .then(() => console.log("Audio reproduciéndose"))
+            .catch(err => console.error("Error al reproducir audio:", err));
     }
 
-    // Detectar interacción para reproducir audio
+    // Detectar cualquier interacción del usuario (toque o clic)
     document.body.addEventListener("click", playAudio);
     document.body.addEventListener("touchstart", playAudio);
-
-    // Cambiar entre las páginas después de un tiempo
+</script>
+  <script>
     document.querySelector('.cta-button').addEventListener('click', function() {
       document.querySelector('.first').classList.remove('show');
       document.querySelector('.second').classList.add('show');
     });
-
-    // Función de confirmación en WhatsApp
-    function confirmAttendance() {
-      const phoneNumber = "59167691341"; // Número de WhatsApp
-      const message = "¡Confirmo%20mi%20asistencia%20a%20la%20graduación!"; // Mensaje predefinido
-      const url = `https://wa.me/${phoneNumber}?text=${message}`;
-      window.open(url, "_blank");
-    }
-
-    // Generar lluvia de tocas
-    const rainContainer = document.querySelector('.rain');
-    for (let i = 0; i < 50; i++) {
-      const drop = document.createElement('i');
-      drop.classList.add('fas', 'fa-graduation-cap');
-      drop.style.left = `${Math.random() * 100}vw`;
-      drop.style.animationDuration = `${2 + Math.random() * 3}s`;
-      drop.style.fontSize = `${1 + Math.random() * 2}em`;
-      rainContainer.appendChild(drop);
-    }
-
-    // Cambiar de div
-    function changeDiv() {
-      document.getElementById('firstDiv').classList.remove('show');
-      setTimeout(function() {
-        document.getElementById('secondDiv').classList.add('show');
-      }, 1000); // Esperar un segundo antes de mostrar el segundo div
-    }
-
-    setTimeout(changeDiv, 8000); // Cambiar después de 8 segundos
   </script>
+  <script>
+
+    function confirmAttendance() {
+            const phoneNumber = "59167691341"; // Número de WhatsApp al que se enviará el mensaje
+            const message = "¡Confirmo%20mi%20asistencia%20a%20la%20graduación!"; // Mensaje predefinido
+            const url = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+            // Abrir el enlace de WhatsApp en una nueva ventana
+            window.open(url, "_blank");
+        }
+  
+
+  // Generar lluvia de tocas
+  const rainContainer = document.querySelector('.rain');
+
+  for (let i = 0; i < 50; i++) {
+    const drop = document.createElement('i');
+    drop.classList.add('fas', 'fa-graduation-cap');
+    drop.style.left = `${Math.random() * 100}vw`;
+    drop.style.animationDuration = `${2 + Math.random() * 3}s`;
+    drop.style.fontSize = `${1 + Math.random() * 2}em`;
+    rainContainer.appendChild(drop);
+  }
+  // Función para cambiar de divs
+  function changeDiv() {
+    // Ocultar el primer div
+    document.getElementById('firstDiv').classList.remove('show');
+
+    // Mostrar el segundo div después de 3 segundos
+    setTimeout(function() {
+      document.getElementById('secondDiv').classList.add('show');
+    }); // 3000 milisegundos (3 segundos)
+  }
+
+  // Llamar a la función para cambiar de div después de 3 segundos
+  setTimeout(changeDiv, 8000); // Después de 3 segundos, cambiar de div
+</script>
 
 </body>
-
 </html>
